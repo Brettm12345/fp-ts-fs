@@ -1,0 +1,24 @@
+{
+  "name": "fp-ts-fs",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .ts ./src",
+    "test": "jest",
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "dependencies": {
+    "fp-ts": "^2.1.1",
+    "fs": "^0.0.1-security",
+    "prettier": "^1.18.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.22",
+    "@types/prettier": "^1.18.3",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
+  }
+}
