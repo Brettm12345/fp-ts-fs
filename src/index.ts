@@ -1,3 +1,4 @@
+import { stringifyJSON, toError } from 'fp-ts/lib/Either'
 import { Kind2, URIS2 } from 'fp-ts/lib/HKT'
 import {
   chain,
@@ -9,8 +10,6 @@ import {
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as fs from 'fs'
 import { format } from 'prettier'
-
-import { tryJSONStringify } from '../util'
 
 export type PackageJSON = Record<string, string>;
 
@@ -42,7 +41,7 @@ const mkDirSafe = (path: string) =>
 
 export const writeJSON = (filepath: string, o: unknown) =>
   pipe(
-    fromEither(tryJSONStringify(o)),
+    fromEither(stringifyJSON(o, toError)),
     map(str => format(str, { parser: "json", printWidth: 40 })),
     chain(json => writeFile(filepath + ".json", json)),
     map(() => filepath)
